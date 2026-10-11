@@ -1,0 +1,11 @@
+translation_only:
+  id: ["translation-en-xx", "translation-xx-en"]
+  km: ["translation-en-xx", "translation-xx-en"]
+  lo: ["translation-en-xx", "translation-xx-en"]
+  ms: ["translation-en-xx", "translation-xx-en"]
+  my: ["translation-en-xx", "translation-xx-en"]
+  ta: ["translation-en-xx", "translation-xx-en"]
+  th: ["translation-en-xx", "translation-xx-en"]
+  tl_full: ["translation-en-xx", "translation-xx-en"]
+  vi: ["translation-en-xx", "translation-xx-en"]
+  zh: ["translation-en-xx", "translation-xx-en"]

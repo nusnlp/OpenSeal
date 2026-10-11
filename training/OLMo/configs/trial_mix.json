@@ -1,0 +1,17 @@
+{
+	"streams": [
+		{
+			"name": "slimpajama",
+			"documents": ["/scratch/mrqorib/data/JSONL-SlimPajama/documents/*.gz"],
+			"output": {
+				"path": "/scratch/mrqorib/data/Dolmo-Mix-SlimPajama/documents",
+				"max_size_in_bytes": 1000000000
+			},
+			"attributes": ["exp"],
+			"filter": {
+				"exclude": []
+			}
+		}
+	],
+	"processes": 14
+}

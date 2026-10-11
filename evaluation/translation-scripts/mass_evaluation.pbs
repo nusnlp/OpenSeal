@@ -1,0 +1,71 @@
+#!/bin/bash
+#PBS -P CFP01-CF-060
+#PBS -j oe
+#PBS -k oed
+#PBS -q auto
+#PBS -l select=1:ngpus=1
+#PBS -l walltime=2:00:00
+
+cd $PBS_O_WORKDIR
+
+image="/app1/common/singularity-img/hopper/pytorch/pytorch_2.3.0_cuda_12.4_ngc_24.04.sif"
+
+module load singularity
+
+# Check if required environment variables are set
+if [ -z "$TASK" ]; then
+    echo "ERROR: TASK not set"
+    exit 1
+fi
+
+if [ -z "$CHECKPOINT_DIR" ]; then
+    echo "ERROR: CHECKPOINT_DIR not set"
+    exit 1
+fi
+
+if [ -z "$CHECKPOINT_NAME" ]; then
+    echo "ERROR: CHECKPOINT_NAME not set"
+    exit 1
+fi
+
+if [ -z "$OUTPUT_DIR" ]; then
+    echo "ERROR: OUTPUT_DIR not set"
+    exit 1
+fi
+
+if [ -z "$NUM_EXAMPLES" ]; then
+    echo "ERROR: NUM_EXAMPLES not set"
+    exit 1
+fi
+
+BASE_MODEL_ARG=""
+if [ "$BASE_MODEL" = true ]; then
+    BASE_MODEL_ARG="--is_base_model"
+fi
+
+BASE_LOG_DIR="/scratch/e1583535/multilingual-llm-project/logs/eval/seahelm"
+
+singularity exec -e \
+--env HF_HOME=/scratch/e1583535/cache \
+--env HF_DATASETS_CACHE=/scratch/e1583535/cache/datasets \
+--env VLLM_USE_V1=0 \
+$image bash << EOF > $BASE_LOG_DIR/stdout-$CHECKPOINT_NAME-$TASK.$PBS_JOBID.log 2> $BASE_LOG_DIR/stderr-$CHECKPOINT_NAME-$TASK.$PBS_JOBID.log
+
+if [ -d "/scratch/e1583535/virtualenvs/my-seahelm" ]; then
+    source /scratch/e1583535/virtualenvs/my-seahelm/bin/activate
+fi
+
+echo "Starting evaluating at $(date)"
+echo "Running on host: $(hostname)"
+echo "GPU info:"
+nvidia-smi --query-gpu=name,memory.total,memory.free --format=csv,noheader,nounits || echo "No GPU detected"
+
+python seahelm_evaluation.py \
+--tasks $TASK \
+--output_dir $OUTPUT_DIR \
+--model_type vllm \
+--model_name $CHECKPOINT_DIR \
+--model_args "enable_prefix_caching=True,tensor_parallel_size=1" \
+--num_in_context_examples $NUM_EXAMPLES $BASE_MODEL_ARG
+
+EOF

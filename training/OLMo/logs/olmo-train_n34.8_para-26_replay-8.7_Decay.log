@@ -1,0 +1,198 @@
+W1202 18:40:12.180000 1279144 torch/distributed/run.py:766] 
+W1202 18:40:12.180000 1279144 torch/distributed/run.py:766] *****************************************
+W1202 18:40:12.180000 1279144 torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1202 18:40:12.180000 1279144 torch/distributed/run.py:766] *****************************************
+Traceback (most recent call last):
+  File "/home/svu/mrqorib/envs/olmo/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in main
+    run(args)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/run.py", line 883, in run
+    elastic_launch(
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 139, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 261, in launch_agent
+    result = agent.run()
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 138, in wrapper
+    result = f(*args, **kwargs)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 711, in run
+    result = self._invoke_run(role)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 864, in _invoke_run
+    self._initialize_workers(self._worker_group)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 138, in wrapper
+    result = f(*args, **kwargs)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 683, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 138, in wrapper
+    result = f(*args, **kwargs)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 500, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 67, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+torch.distributed.DistStoreError: Timed out after 901 seconds waiting for clients. 1/2 clients joined.
+W1202 19:09:05.069000 114577 torch/distributed/run.py:766] 
+W1202 19:09:05.069000 114577 torch/distributed/run.py:766] *****************************************
+W1202 19:09:05.069000 114577 torch/distributed/run.py:766] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W1202 19:09:05.069000 114577 torch/distributed/run.py:766] *****************************************
+[E1202 19:23:54.438261738 socket.cpp:1019] [c10d] The client socket has timed out after 900000ms while trying to connect to (172.18.126.201, 30452).
+[W1202 19:23:54.488372255 TCPStore.cpp:343] [c10d] TCP client failed to connect/validate to host 172.18.126.201:30452 - retrying (try=0, timeout=900000ms, delay=64621ms): The client socket has timed out after 900000ms while trying to connect to (172.18.126.201, 30452).
+Exception raised from throwTimeoutError at /pytorch/torch/csrc/distributed/c10d/socket.cpp:1021 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x98 (0x1555545785e8 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x5ba8bfe (0x15553d8d5bfe in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: <unknown function> + 0x136920d (0x15553909620d in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: <unknown function> + 0x5bf5791 (0x15553d922791 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #4: <unknown function> + 0x5bf5949 (0x15553d922949 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #5: <unknown function> + 0x5bf5d01 (0x15553d922d01 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #6: <unknown function> + 0x5ba3eeb (0x15553d8d0eeb in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #7: c10d::TCPStore::TCPStore(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, c10d::TCPStoreOptions const&) + 0x4b5 (0x15553d8d37f5 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0xc1f385 (0x15554c775385 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #9: <unknown function> + 0xc53c74 (0x15554c7a9c74 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #10: <unknown function> + 0x3896be (0x15554bedf6be in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #11: <unknown function> + 0x15a10e (0x5555556ae10e in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #12: _PyObject_MakeTpCall + 0x25b (0x5555556a4a7b in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #13: <unknown function> + 0x168acb (0x5555556bcacb in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #14: _PyObject_Call + 0x115 (0x5555556bd635 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #15: <unknown function> + 0x165087 (0x5555556b9087 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #16: <unknown function> + 0x150e2b (0x5555556a4e2b in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #17: <unknown function> + 0x38824b (0x15554bede24b in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #18: _PyObject_MakeTpCall + 0x25b (0x5555556a4a7b in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #19: _PyEval_EvalFrameDefault + 0x75a0 (0x55555569e150 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #20: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #21: _PyEval_EvalFrameDefault + 0x8ac (0x55555569745c in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #22: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #23: _PyEval_EvalFrameDefault + 0x2a27 (0x5555556995d7 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #24: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #25: _PyEval_EvalFrameDefault + 0x8ac (0x55555569745c in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #26: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #27: _PyEval_EvalFrameDefault + 0x2a27 (0x5555556995d7 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #28: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #29: _PyEval_EvalFrameDefault + 0x8ac (0x55555569745c in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #30: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #31: _PyEval_EvalFrameDefault + 0x8ac (0x55555569745c in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #32: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #33: _PyEval_EvalFrameDefault + 0x2a27 (0x5555556995d7 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #34: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #35: _PyEval_EvalFrameDefault + 0x8ac (0x55555569745c in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #36: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #37: _PyEval_EvalFrameDefault + 0x6bd (0x55555569726d in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #38: _PyObject_FastCallDictTstate + 0xc4 (0x5555556a3c14 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #39: _PyObject_Call_Prepend + 0x5c (0x5555556b986c in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #40: <unknown function> + 0x280700 (0x5555557d4700 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #41: PyObject_Call + 0xbb (0x5555556bd42b in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #42: _PyEval_EvalFrameDefault + 0x2a27 (0x5555556995d7 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #43: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #44: _PyEval_EvalFrameDefault + 0x6bd (0x55555569726d in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #45: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #46: _PyEval_EvalFrameDefault + 0x2a27 (0x5555556995d7 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #47: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #48: _PyEval_EvalFrameDefault + 0x6bd (0x55555569726d in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #49: <unknown function> + 0x13f9c6 (0x5555556939c6 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #50: PyEval_EvalCode + 0x86 (0x555555789256 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #51: <unknown function> + 0x260108 (0x5555557b4108 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #52: <unknown function> + 0x2599cb (0x5555557ad9cb in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #53: <unknown function> + 0x25fe55 (0x5555557b3e55 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #54: _PyRun_SimpleFileObject + 0x1a8 (0x5555557b3338 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #55: _PyRun_AnyFileObject + 0x43 (0x5555557b2f83 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #56: Py_RunMain + 0x2be (0x5555557a5a5e in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #57: Py_BytesMain + 0x2d (0x55555577c02d in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #58: <unknown function> + 0x29d90 (0x1555551d7d90 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #59: __libc_start_main + 0x80 (0x1555551d7e40 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #60: _start + 0x25 (0x55555577bf25 in /home/svu/mrqorib/envs/olmo/bin/python)
+
+[E1202 19:39:16.722207697 socket.cpp:1019] [c10d] The client socket has timed out after 900000ms while trying to connect to (172.18.126.201, 30452).
+[E1202 19:39:16.722348440 TCPStore.cpp:331] [c10d] TCP client failed to connect/validate to host 172.18.126.201:30452 - timed out (try=1, timeout=900000ms): The client socket has timed out after 900000ms while trying to connect to (172.18.126.201, 30452).
+Exception raised from throwTimeoutError at /pytorch/torch/csrc/distributed/c10d/socket.cpp:1021 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x98 (0x1555545785e8 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x5ba8bfe (0x15553d8d5bfe in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #2: <unknown function> + 0x136920d (0x15553909620d in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #3: <unknown function> + 0x5bf5791 (0x15553d922791 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #4: <unknown function> + 0x5bf5949 (0x15553d922949 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #5: <unknown function> + 0x5bf5d01 (0x15553d922d01 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #6: <unknown function> + 0x5ba3eeb (0x15553d8d0eeb in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #7: c10d::TCPStore::TCPStore(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, c10d::TCPStoreOptions const&) + 0x4b5 (0x15553d8d37f5 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0xc1f385 (0x15554c775385 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #9: <unknown function> + 0xc53c74 (0x15554c7a9c74 in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #10: <unknown function> + 0x3896be (0x15554bedf6be in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #11: <unknown function> + 0x15a10e (0x5555556ae10e in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #12: _PyObject_MakeTpCall + 0x25b (0x5555556a4a7b in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #13: <unknown function> + 0x168acb (0x5555556bcacb in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #14: _PyObject_Call + 0x115 (0x5555556bd635 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #15: <unknown function> + 0x165087 (0x5555556b9087 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #16: <unknown function> + 0x150e2b (0x5555556a4e2b in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #17: <unknown function> + 0x38824b (0x15554bede24b in /home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/lib/libtorch_python.so)
+frame #18: _PyObject_MakeTpCall + 0x25b (0x5555556a4a7b in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #19: _PyEval_EvalFrameDefault + 0x75a0 (0x55555569e150 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #20: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #21: _PyEval_EvalFrameDefault + 0x8ac (0x55555569745c in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #22: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #23: _PyEval_EvalFrameDefault + 0x2a27 (0x5555556995d7 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #24: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #25: _PyEval_EvalFrameDefault + 0x8ac (0x55555569745c in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #26: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #27: _PyEval_EvalFrameDefault + 0x2a27 (0x5555556995d7 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #28: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #29: _PyEval_EvalFrameDefault + 0x8ac (0x55555569745c in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #30: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #31: _PyEval_EvalFrameDefault + 0x8ac (0x55555569745c in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #32: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #33: _PyEval_EvalFrameDefault + 0x2a27 (0x5555556995d7 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #34: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #35: _PyEval_EvalFrameDefault + 0x8ac (0x55555569745c in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #36: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #37: _PyEval_EvalFrameDefault + 0x6bd (0x55555569726d in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #38: _PyObject_FastCallDictTstate + 0xc4 (0x5555556a3c14 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #39: _PyObject_Call_Prepend + 0x5c (0x5555556b986c in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #40: <unknown function> + 0x280700 (0x5555557d4700 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #41: PyObject_Call + 0xbb (0x5555556bd42b in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #42: _PyEval_EvalFrameDefault + 0x2a27 (0x5555556995d7 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #43: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #44: _PyEval_EvalFrameDefault + 0x6bd (0x55555569726d in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #45: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #46: _PyEval_EvalFrameDefault + 0x2a27 (0x5555556995d7 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #47: _PyFunction_Vectorcall + 0x7c (0x5555556ae9fc in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #48: _PyEval_EvalFrameDefault + 0x6bd (0x55555569726d in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #49: <unknown function> + 0x13f9c6 (0x5555556939c6 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #50: PyEval_EvalCode + 0x86 (0x555555789256 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #51: <unknown function> + 0x260108 (0x5555557b4108 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #52: <unknown function> + 0x2599cb (0x5555557ad9cb in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #53: <unknown function> + 0x25fe55 (0x5555557b3e55 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #54: _PyRun_SimpleFileObject + 0x1a8 (0x5555557b3338 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #55: _PyRun_AnyFileObject + 0x43 (0x5555557b2f83 in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #56: Py_RunMain + 0x2be (0x5555557a5a5e in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #57: Py_BytesMain + 0x2d (0x55555577c02d in /home/svu/mrqorib/envs/olmo/bin/python)
+frame #58: <unknown function> + 0x29d90 (0x1555551d7d90 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #59: __libc_start_main + 0x80 (0x1555551d7e40 in /lib/x86_64-linux-gnu/libc.so.6)
+frame #60: _start + 0x25 (0x55555577bf25 in /home/svu/mrqorib/envs/olmo/bin/python)
+
+Traceback (most recent call last):
+  File "/home/svu/mrqorib/envs/olmo/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in main
+    run(args)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/run.py", line 883, in run
+    elastic_launch(
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 139, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 261, in launch_agent
+    result = agent.run()
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 138, in wrapper
+    result = f(*args, **kwargs)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 711, in run
+    result = self._invoke_run(role)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 864, in _invoke_run
+    self._initialize_workers(self._worker_group)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 138, in wrapper
+    result = f(*args, **kwargs)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 683, in _initialize_workers
+    self._rendezvous(worker_group)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 138, in wrapper
+    result = f(*args, **kwargs)
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 500, in _rendezvous
+    rdzv_info = spec.rdzv_handler.next_rendezvous()
+  File "/home/svu/mrqorib/envs/olmo/lib/python3.10/site-packages/torch/distributed/elastic/rendezvous/static_tcp_rendezvous.py", line 67, in next_rendezvous
+    self._store = TCPStore(  # type: ignore[call-arg]
+torch.distributed.DistNetworkError: The client socket has timed out after 900000ms while trying to connect to (172.18.126.201, 30452).

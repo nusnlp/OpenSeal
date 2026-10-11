@@ -1,0 +1,16 @@
+streams:
+  - name: slimpajama
+    documents:
+      - /scratch/mrqorib/data/JSONL-SlimPajama/validation/documents/*.gz
+
+    output:
+      path: /scratch/mrqorib/data/Dolmo-Mix-SlimPajama/validation/documents
+      max_size_in_bytes: 1_000_000_000
+    attributes:
+      - exp
+    filter:
+      include:
+        - "$.attributes[?(@.exp__char_length_with_paragraphs_v1__document[0][2] > 1)]"
+      exclude: []
+
+processes: 14  

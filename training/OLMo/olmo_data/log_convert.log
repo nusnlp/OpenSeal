@@ -1,0 +1,5 @@
+Fetching all parameters from the checkpoint at /scratch/Projects/CFP-01/CFP01-CF-060/checkpoints/OLMo-TinyLlama/TinyLlamaV2-1B-stage1/step210000-unsharded.
+Saving a GPT2TokenizerFast to /scratch/Projects/CFP-01/CFP01-CF-060/checkpoints/OLMo-TinyLlama/TinyLlamaV2-1B-stage1/hf/step210000-unsharded.
+Loading the checkpoint in a OLMo2 model.
+Loading checkpoint shards:   0%|          | 0/23 [00:00<?, ?it/s]Loading checkpoint shards:  48%|████▊     | 11/23 [00:00<00:00, 108.93it/s]Loading checkpoint shards: 100%|██████████| 23/23 [00:00<00:00, 113.65it/s]Loading checkpoint shards: 100%|██████████| 23/23 [00:00<00:00, 112.86it/s]
+Saving in the Transformers format.

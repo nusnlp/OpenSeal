@@ -1,0 +1,42 @@
+#!/bin/bash
+#PBS -P <>
+#PBS -j oe
+#PBS -k oed
+#PBS -N olmo_train
+#PBS -q auto
+#PBS -m abe
+#PBS -l select=1:ngpus=8
+#PBS -l walltime=96:00:00
+
+cd $PBS_O_WORKDIR;
+
+image="/app1/common/singularity-img/hopper/pytorch/pytorch_2.3.0_cuda_12.4_ngc_24.04.sif"
+
+module load singularity
+
+singularity exec -e \
+$image bash << EOF > ./logs/train/stdout.$PBS_JOBID 2> ./logs/train/stderr.$PBS_JOBID
+
+python -c "import gc, torch; torch.cuda.empty_cache(); gc.collect()"
+
+source /hpctmp/e1583535/virtualenvs/olmo/bin/activate
+
+echo "Starting training at $(date)"
+echo "Running on host: $(hostname)"
+echo "GPU info:"
+nvidia-smi --query-gpu=name,memory.total,memory.free --format=csv,noheader,nounits || echo "No GPU detected"
+
+torchrun --nproc_per_node=8 \
+OLMo/scripts/train.py \
+OLMo/configs/CPT/7B_n34.8_para-26_replay-8.7.yaml 2>&1 | tee logs/olmo-train_7B_n34.8_para-26_replay-8.7_1.log
+
+# sleep 10
+
+torchrun --nproc_per_node=8 \
+OLMo/scripts/train.py \
+OLMo/configs/CPT/7B_n34.8_para-26_replay-8.7_Decay.yaml 2>&1 | tee logs/olmo-train_7B_n34.8_para-26_replay-8.7_Decay.log
+
+# you can put more commands here
+echo "Done at $(date)"
+
+EOF

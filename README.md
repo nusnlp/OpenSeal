@@ -27,8 +27,7 @@ We use the [OLMo](https://github.com/allenai/olmo) code base for the [training](
 | ---------- | --- |
 | OpenSeal 1B, OpenSeal 7B | [nusnlp/OpenSeal-Parallel](https://huggingface.co/datasets/nusnlp/OpenSeal-Parallel) + [nusnlp/OpenSeal-OLMo2-Replay](https://huggingface.co/datasets/nusnlp/OpenSeal-OLMo2-Replay) |
 | Multilingual | [nusnlp/OpenSeal-SEA-PILE-v2](https://huggingface.co/datasets/nusnlp/OpenSeal-SEA-PILE-v2) + [nusnlp/OpenSeal-MapCC](https://huggingface.co/datasets/nusnlp/OpenSeal-MapCC) + [nusnlp/OpenSeal-OLMo2-Replay](https://huggingface.co/datasets/nusnlp/OpenSeal-OLMo2-Replay) |
-| Mixed | [nusnlp/OpenSeal-SEA-PILE-v2](https://huggingface.co/datasets/nusnlp/OpenSeal-SEA-PILE-v2) + [nusnlp/OpenSeal-MapCC](https://huggingface.co/datasets/nusnlp/OpenSeal-MapCC) + [nusnlp/OpenSeal-Parallel](https://huggingface.co/datasets/nusnlp/OpenSeal-Parallel) + [nusnlp/OpenSeal-OLMo2-Replay](https://huggingface.co/datasets/nusnlp/OpenSeal-OLMo2-Replay) |
-| Parallel First, Parallel Last | [nusnlp/OpenSeal-Parallel](https://huggingface.co/datasets/nusnlp/OpenSeal-Parallel) + [nusnlp/OpenSeal-OLMo2-Replay](https://huggingface.co/datasets/nusnlp/OpenSeal-OLMo2-Replay) |
+| Mixed, Parallel First, Parallel Last | [nusnlp/OpenSeal-SEA-PILE-v2](https://huggingface.co/datasets/nusnlp/OpenSeal-SEA-PILE-v2) + [nusnlp/OpenSeal-MapCC](https://huggingface.co/datasets/nusnlp/OpenSeal-MapCC) + [nusnlp/OpenSeal-Parallel](https://huggingface.co/datasets/nusnlp/OpenSeal-Parallel) + [nusnlp/OpenSeal-OLMo2-Replay](https://huggingface.co/datasets/nusnlp/OpenSeal-OLMo2-Replay) |
 | Multilingual-Replacement | [nusnlp/OpenSeal-Multilingual-Replacement](https://huggingface.co/datasets/nusnlp/OpenSeal-Multilingual-Replacement) + [nusnlp/OpenSeal-OLMo2-Replay](https://huggingface.co/datasets/nusnlp/OpenSeal-OLMo2-Replay) |
 
 

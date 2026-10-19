@@ -48,7 +48,7 @@ If you find our work useful, we kindly ask that you cite our paper.
     author = "Nguyen, Tan Sang and
       Qorib, Muhammad Reza  and
       Ng, Hwee Tou",
-    booktitle = "Findings of the 2023 Conference on Empirical Methods in Natural Language Processing",
+    booktitle = "Findings of the 2026 Conference on Empirical Methods in Natural Language Processing",
 }
 ```
 
